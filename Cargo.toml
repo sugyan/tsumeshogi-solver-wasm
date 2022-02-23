@@ -1,0 +1,17 @@
+[package]
+name = "tsumeshogi-solver-wasm"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+wasm-bindgen = "0.2.79"
+js-sys = "0.3.56"
+console_error_panic_hook = "0.1.7"
+getrandom = { version = "0.2", features = ["js"] }
+shogi = "0.12.1"
+tsumeshogi-solver = { git = "https://github.com/sugyan/tsumeshogi-solver", tag = "0.3.0" }
+
+[lib]
+crate-type = ["cdylib", "rlib"]
