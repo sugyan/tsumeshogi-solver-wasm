@@ -1,6 +1,5 @@
 use js_sys::Array;
-use shogi::bitboard::Factory;
-use shogi::Position;
+use tsumeshogi_solver::Backend;
 use wasm_bindgen::prelude::*;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
@@ -14,18 +13,16 @@ pub struct Solver;
 
 #[wasm_bindgen]
 impl Solver {
+    #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
-        Factory::init();
         console_error_panic_hook::set_once();
         Self
     }
     pub fn solve(&self, sfen: String) -> JsValue {
-        let mut pos = Position::new();
-        pos.set_sfen(&sfen).expect("failed to set sfen");
         JsValue::from(
-            tsumeshogi_solver::solve(pos)
+            tsumeshogi_solver::solve(&sfen, Backend::Yasai)
                 .iter()
-                .map(|m| JsValue::from_str(&m.to_string()))
+                .map(|s| JsValue::from_str(s))
                 .collect::<Array>(),
         )
     }
