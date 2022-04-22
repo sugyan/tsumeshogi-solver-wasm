@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>WASM Tsumeshogi Solver</title>
+    <script type="module" src="https://unpkg.com/shogi-player-webcomponents@0.1.2?module"></script>
+    <style>
+      html {
+        touch-action: manipulation;
+      }
+      .player {
+        width: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
+    <div class="player">
+      <shogi-player id="shogi-player" mode="edit" sfen="4k4/9/9/9/9/9/9/9/9 b 2r2b4g4s4n4l18p 1"></shogi-player>
+    </div>
+    <button id="button">Solve</button>
+    <pre id="result"></pre>
+    <script src="./bootstrap.js"></script>
+  </body>
+</html>
