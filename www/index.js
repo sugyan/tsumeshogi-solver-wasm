@@ -1,4 +1,13 @@
 import { Solver } from "tsumeshogi-solver-wasm";
 
 const solver = Solver.new();
-console.log(solver.solve("ln1g3k1/5G2l/1+LspSp2p/2p1S2p1/2r3p2/p3P4/1P+BP1P+b1P/2GS5/L2K1G3 b NPr2n5p 79"));
+
+window.addEventListener("DOMContentLoaded", () => {
+  let sfen = "4k4/9/9/9/9/9/9/9/9 b 2r2b4g4s4n4l18p 1";
+  document.getElementById("shogi-player").addEventListener("update", (e) => {
+    sfen = e.detail.sfen;
+  });
+  document.getElementById("button").addEventListener("click", () => {
+    document.getElementById("result").innerText = JSON.stringify(solver.solve(sfen))
+  })
+});
