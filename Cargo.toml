@@ -11,7 +11,8 @@ js-sys = "0.3.57"
 console_error_panic_hook = "0.1.7"
 getrandom = { version = "0.2", features = ["js"] }
 shogi = "0.12.2"
-tsumeshogi-solver = { git = "https://github.com/sugyan/tsumeshogi-solver", tag = "0.4.0" }
+tsumeshogi-solver = { git = "https://github.com/sugyan/tsumeshogi-solver", tag = "0.5.1" }
+instant = { version = "0.1", features = [ "wasm-bindgen" ] }
 
 [lib]
 crate-type = ["cdylib", "rlib"]

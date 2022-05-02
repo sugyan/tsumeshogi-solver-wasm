@@ -1,4 +1,5 @@
 use js_sys::Array;
+use std::time::Duration;
 use tsumeshogi_solver::Backend;
 use wasm_bindgen::prelude::*;
 
@@ -20,10 +21,13 @@ impl Solver {
     }
     pub fn solve(&self, sfen: String) -> JsValue {
         JsValue::from(
-            tsumeshogi_solver::solve(&sfen, Backend::Yasai)
-                .iter()
-                .map(|s| JsValue::from_str(s))
-                .collect::<Array>(),
+            match tsumeshogi_solver::solve(&sfen, Backend::Yasai, Some(Duration::from_secs(5))) {
+                Ok(moves) => moves
+                    .iter()
+                    .map(|s| JsValue::from_str(s))
+                    .collect::<Array>(),
+                Err(_) => Array::new(),
+            },
         )
     }
 }
