@@ -10,7 +10,10 @@ getrandom = { version = "0.2", features = ["js"] }
 instant = { version = "0.1", features = [ "wasm-bindgen" ] }
 serde = { version = "1.0", features = ["derive"] }
 wasm-bindgen = { version = "0.2", features = ["serde-serialize"] }
-tsumeshogi-solver = { git = "https://github.com/sugyan/tsumeshogi-solver", tag = "0.5.2" }
+shogi_core = "0.1.4"
+shogi_usi_parser = "0.1.0"
+shogi_official_kifu = "0.1.1"
+solver = { git = "https://github.com/sugyan/tsumeshogi-solver", tag = "0.6.1" }
 
 [lib]
 crate-type = ["cdylib", "rlib"]

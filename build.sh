@@ -1,4 +1,10 @@
 #!/bin/bash
 set -eux
 
-wasm-pack build --out-dir www/pkg --target no-modules
+# Set PATH to latest version of`wasm-opt`
+
+export RUSTFLAGS="-C target-feature=+simd128"
+wasm-pack -v build \
+    --out-dir www/pkg \
+    --target no-modules \
+    --mode no-install
